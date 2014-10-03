@@ -1,0 +1,4 @@
+*.swp
+net/actives/*.swp
+net/controls/*.swp
+

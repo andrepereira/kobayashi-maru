@@ -25,6 +25,7 @@ func InsertRoute(to string) bool {
 	defer session.Close() // Optional. Switch the session to a monotonic behavior.
 	session.SetMode(mgo.Monotonic, true)
 	c := session.DB("test").C("routes")
+
 	err = c.Insert(&Route{to, true})
 
 	if err != nil {
