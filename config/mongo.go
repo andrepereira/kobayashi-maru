@@ -11,7 +11,7 @@ func Connect(server string, mode bool, db string, collection string) *mgo.Collec
 	if err != nil {
 		panic(err)
 	}
-	defer session.Close() // Optional. Switch the session to a monotonic behavior.
+	//	defer session.Close() // Optional. Switch the session to a monotonic behavior.
 	session.SetMode(mgo.Monotonic, mode)
 	c := session.DB(db).C(collection)
 

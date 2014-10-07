@@ -3,7 +3,7 @@ package routertbl
 import (
 	"log"
 
-	"gopkg.in/mgo.v2"
+	"github.com/andrepereira/kobayashi-maru/config"
 	"gopkg.in/mgo.v2/bson"
 )
 
@@ -18,15 +18,18 @@ type Route struct {
 //ToDo: make the connection to database a package outside (SOLID)
 func InsertRoute(to string) bool {
 
-	session, err := mgo.Dial("127.0.0.1")
-	if err != nil {
-		panic(err)
-	}
-	defer session.Close() // Optional. Switch the session to a monotonic behavior.
-	session.SetMode(mgo.Monotonic, true)
-	c := session.DB("test").C("routes")
+	//Legacyi block. Veryfing if is gonna be allright
+	//	session, err := mgo.Dial("127.0.0.1")
+	//	if err != nil {
+	//		panic(err)
+	//	}
+	//	defer session.Close() // Optional. Switch the session to a monotonic behavior.
+	//	session.SetMode(mgo.Monotonic, true)
+	//	c := session.DB("test").C("routes")
 
-	err = c.Insert(&Route{to, true})
+	c := mongo.Connect("127.0.0.1", true, "test", "routes")
+
+	err := c.Insert(&Route{to, true})
 
 	if err != nil {
 		log.Fatal(err)
@@ -42,17 +45,10 @@ func InsertRoute(to string) bool {
 //ToDo: make the connection to database a package outside (SOLID)
 func GetRoute(to string) bool {
 
-	session, err := mgo.Dial("127.0.0.1")
-	if err != nil {
-		panic(err)
-	}
-	defer session.Close() // Optional. Switch the session to a monotonic behavior.
-	session.SetMode(mgo.Monotonic, true)
-
-	c := session.DB("test").C("routes")
+	c := mongo.Connect("127.0.0.1", true, "test", "routes")
 
 	result := Route{}
-	err = c.Find(bson.M{"to": to}).One(&result)
+	err := c.Find(bson.M{"to": to}).One(&result)
 	if err != nil {
 		log.Fatal(err)
 	}
