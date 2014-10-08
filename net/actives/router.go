@@ -7,6 +7,15 @@ type Id struct {
 	Vendor string //Vendor of emulated hardware
 	Model  string //Model of emulated hardware
 	OS     string //Operating systemof emulated hardware
+	TX     int64  //Actual uplink speed in kbps
+	RX     int64  //Actual downlink speed in kbps
+	TXPPS  int64  //Actual uplink speed in pps
+	RXPPS  int64  //Actual downlink speed in pps
+	TXM    int64  //Maximum uplink in kbps
+	RXM    int64  //Maximum downlink in kbps
+	TXPPSM int64  //Maximum uplink in pps
+	RXPPSM int64  //Maximum downlink in pps
+
 }
 
 //Authorize the route to a destiny "to"
