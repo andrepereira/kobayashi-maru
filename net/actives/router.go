@@ -2,7 +2,12 @@ package router
 
 import "github.com/andrepereira/kobayashi-maru/net/controls"
 
-var model string //Model of emulated device
+type Id struct {
+	IP     string //IP address
+	Vendor string //Vendor of emulated hardware
+	Model  string //Model of emulated hardware
+	OS     string //Operating systemof emulated hardware
+}
 
 //Authorize the route to a destiny "to"
 //This make the function of a router device
