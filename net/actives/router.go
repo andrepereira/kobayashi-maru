@@ -1,25 +1,8 @@
 package router
 
-import "github.com/andrepereira/kobayashi-maru/net/controls"
-
-type Id struct {
-	IP            string        //IP address
-	Vendor        string        //Vendor of emulated hardware
-	Model         string        //Model of emulated hardware
-	OS            string        //Operating systemof emulated hardware
-	TX            int64         //Actual uplink speed in kbps
-	RX            int64         //Actual downlink speed in kbps
-	TXPPS         int64         //Actual uplink speed in pps
-	RXPPS         int64         //Actual downlink speed in pps
-	TXM           int64         //Maximum uplink in kbps
-	RXM           int64         //Maximum downlink in kbps
-	TXPPSM        int64         //Maximum uplink in pps
-	RXPPSM        int64         //Maximum downlink in pps
-	RoorPassword  string        //Password of administrative user
-	USER          string        //Username of a non privileged user at active
-	UserPassword  string        //Password of a non privileged user at system
-	ProcessRuning [20][2]string //Table 20x2 of runing process with process name and your version
-}
+import (
+	"github.com/andrepereira/kobayashi-maru/net/controls"
+)
 
 //Authorize the route to a destiny "to"
 //This make the function of a router device
