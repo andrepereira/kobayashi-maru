@@ -1,7 +1,8 @@
 package definition
 
-type Id struct {
+type id struct {
 	IP            string        //IP address
+	Router        string        //IP of router to connect this hardware
 	Vendor        string        //Vendor of emulated hardware
 	Model         string        //Model of emulated hardware
 	OS            string        //Operating systemof emulated hardware
@@ -16,14 +17,17 @@ type Id struct {
 	RootPassword  string        //Password of administrative user
 	User          string        //Username of a non privileged user at active
 	UserPassword  string        //Password of a non privileged user at system
-	ProcessRuning [20][2]string //Table 20x2 of runing process with process name and your version
+	Powered       bool          //Hardware ON = true or OFF = false
+	ProcessRuning [20][3]string //Table 20x3 of runing process with process name, your version and the network listener port(if used)
+
 }
 
 //The function define the set of details permanents and variables to a instance of hardware
-func SetHardware(ip string, vendor string, model string, os string, tx int64, rx int64, txpps int64, rxpps int64, txm int64, rxm int64, txppsm int64, rxppsm int64, rootPassword string, user string, userPassword string, processRuning [20][2]string) (Id, bool) {
+func SetHardware(ip string, router string, vendor string, model string, os string, tx int64, rx int64, txpps int64, rxpps int64, txm int64, rxm int64, txppsm int64, rxppsm int64, rootPassword string, user string, userPassword string, powered bool, processRuning [20][3]string) (id, bool) {
 
-	var hw Id
+	var hw id
 	hw.IP = ip
+	hw.Router = router
 	hw.Vendor = vendor
 	hw.Model = model
 	hw.OS = os
@@ -38,6 +42,7 @@ func SetHardware(ip string, vendor string, model string, os string, tx int64, rx
 	hw.RootPassword = rootPassword
 	hw.User = user
 	hw.UserPassword = userPassword
+	hw.Powered = powered
 	hw.ProcessRuning = processRuning
 
 	return hw, true
