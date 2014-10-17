@@ -16,6 +16,7 @@ func TestSetHardware(t *testing.T) {
 
 }
 
+//Unit test to verify if a ping is routed and a pong return of a powered hosting
 func TestPing(t *testing.T) {
 
 	var pass bool

@@ -51,6 +51,8 @@ func SetHardware(ip string, router string, vendor string, model string, os strin
 
 }
 
+//Make acheckto verify if exists a routeto a ping be delivered
+//ToDo: Verify if the destinyis powered and if it make a pong back
 func Ping(ip string) bool {
 
 	sucess := router.Routing(ip)
