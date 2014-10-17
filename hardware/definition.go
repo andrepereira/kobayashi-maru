@@ -1,5 +1,7 @@
 package definition
 
+import "github.com/andrepereira/kobayashi-maru/net/actives"
+
 type id struct {
 	IP            string        //IP address
 	Router        string        //IP of router to connect this hardware
@@ -46,5 +48,12 @@ func SetHardware(ip string, router string, vendor string, model string, os strin
 	hw.ProcessRuning = processRuning
 
 	return hw, true
+
+}
+
+func Ping(ip string) bool {
+
+	sucess := router.Routing(ip)
+	return sucess
 
 }

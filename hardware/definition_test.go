@@ -15,3 +15,15 @@ func TestSetHardware(t *testing.T) {
 	}
 
 }
+
+func TestPing(t *testing.T) {
+
+	var pass bool
+
+	pass = Ping("192.168.1.67")
+
+	if pass != true {
+		t.Error("Expected true, got ", pass)
+	}
+
+}
