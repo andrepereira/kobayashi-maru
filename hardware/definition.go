@@ -56,6 +56,7 @@ func SetHardware(ip string, router string, vendor string, model string, os strin
 func Ping(ip string) bool {
 
 	sucess := router.Routing(ip)
+
 	return sucess
 
 }
